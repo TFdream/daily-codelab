@@ -1,8 +1,6 @@
 package com.ricky.cglib.interceptor;
 
-import com.ricky.cglib.UserDao;
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.MethodInterceptor;
+import com.ricky.cglib.log.UserActivityLogginImpl;
 
 /**
  * 实现AOP
@@ -13,22 +11,8 @@ public class MethodInterceptorDemo {
 
 	public static void main(String[] args) {
 		
-		new MethodInterceptorDemo().run();
+		UserActivityLogginImpl activityLogginImpl = new UserActivityCglibMethodProxy(new AopInterceptor()).getProxyInstance();
+		activityLogginImpl.signin("abc@gmail.com", "ricky", "abc");
 	}
 
-	private void run() {
-		
-		UserDao userDao = getProxyInstance(new AopInterceptor());
-		userDao.insert();
-		userDao.query();
-	}
-
-	public UserDao getProxyInstance(MethodInterceptor methodInterceptor){  
-	    Enhancer en = new Enhancer();
-	    //进行代理 
-	    en.setSuperclass(UserDao.class);  
-	    en.setCallback(methodInterceptor);  
-	    //生成代理实例  
-	    return (UserDao)en.create();  
-	}  
 }
