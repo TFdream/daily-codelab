@@ -1,4 +1,4 @@
-package com.ricky.cglib.log;
+package com.ricky.codelab.cglib.log;
 
 public interface UserActivityLogger {
 	

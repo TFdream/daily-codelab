@@ -1,4 +1,4 @@
-package com.ricky.cglib.interceptor;
+package com.ricky.codelab.cglib.interceptor;
 
 import java.lang.reflect.Method;
 import net.sf.cglib.proxy.MethodInterceptor;

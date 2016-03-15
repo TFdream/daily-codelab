@@ -1,4 +1,4 @@
-package com.ricky.cglib.log;
+package com.ricky.codelab.cglib.log;
 
 /**
  * 需要被代理的类

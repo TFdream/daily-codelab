@@ -1,10 +1,11 @@
-package com.ricky.cglib.jdk;
+package com.ricky.codelab.cglib.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
-import com.ricky.cglib.log.UserActivityLogger;
+
+import com.ricky.codelab.cglib.log.UserActivityLogger;
 
 /**
  * 使用JDK动态代理实现

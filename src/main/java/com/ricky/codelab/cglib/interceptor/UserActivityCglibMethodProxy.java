@@ -1,8 +1,9 @@
-package com.ricky.cglib.interceptor;
+package com.ricky.codelab.cglib.interceptor;
+
+import com.ricky.codelab.cglib.log.UserActivityLogginImpl;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
-import com.ricky.cglib.log.UserActivityLogginImpl;
 
 public class UserActivityCglibMethodProxy {
 

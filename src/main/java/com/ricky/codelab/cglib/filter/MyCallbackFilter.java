@@ -1,4 +1,4 @@
-package com.ricky.cglib.filter;
+package com.ricky.codelab.cglib.filter;
 
 import java.lang.reflect.Method;
 import net.sf.cglib.proxy.CallbackFilter;

@@ -1,4 +1,4 @@
-package com.ricky.cglib;
+package com.ricky.codelab.cglib;
 
 public class App {
 

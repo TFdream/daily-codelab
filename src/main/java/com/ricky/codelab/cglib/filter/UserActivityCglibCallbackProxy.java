@@ -1,10 +1,11 @@
-package com.ricky.cglib.filter;
+package com.ricky.codelab.cglib.filter;
+
+import com.ricky.codelab.cglib.log.UserActivityLogginImpl;
 
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.NoOp;
-import com.ricky.cglib.log.UserActivityLogginImpl;
 
 public class UserActivityCglibCallbackProxy {
 

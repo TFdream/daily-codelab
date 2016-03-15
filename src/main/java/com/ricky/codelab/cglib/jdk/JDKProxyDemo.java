@@ -1,7 +1,7 @@
-package com.ricky.cglib.jdk;
+package com.ricky.codelab.cglib.jdk;
 
-import com.ricky.cglib.log.UserActivityLogger;
-import com.ricky.cglib.log.UserActivityLogginImpl;
+import com.ricky.codelab.cglib.log.UserActivityLogger;
+import com.ricky.codelab.cglib.log.UserActivityLogginImpl;
 
 /**
  * JDK动态代理实现

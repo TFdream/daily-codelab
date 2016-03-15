@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ricky</groupId>
+	<groupId>com.ricky.codelab</groupId>
 	<artifactId>cglib</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -12,7 +12,9 @@
 
 	<properties>
 		<cglib.version>3.1</cglib.version>
-		<junit.version>4.11</junit.version>
+		<java.version>1.8</java.version>
+		<maven.compiler.version>3.1</maven.compiler.version>
+		<junit.version>4.12</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -36,12 +38,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<testSource>${java.version}</testSource>
+					<testTarget>${java.version}</testTarget>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

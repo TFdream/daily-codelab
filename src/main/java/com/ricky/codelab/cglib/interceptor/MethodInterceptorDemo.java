@@ -1,6 +1,6 @@
-package com.ricky.cglib.interceptor;
+package com.ricky.codelab.cglib.interceptor;
 
-import com.ricky.cglib.log.UserActivityLogginImpl;
+import com.ricky.codelab.cglib.log.UserActivityLogginImpl;
 
 /**
  * 实现AOP

@@ -1,7 +1,7 @@
-package com.ricky.cglib.filter;
+package com.ricky.codelab.cglib.filter;
 
-import com.ricky.cglib.interceptor.AopInterceptor;
-import com.ricky.cglib.log.UserActivityLogginImpl;
+import com.ricky.codelab.cglib.interceptor.AopInterceptor;
+import com.ricky.codelab.cglib.log.UserActivityLogginImpl;
 
 /**
  * 方法过滤器
