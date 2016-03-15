@@ -1,2 +1,2 @@
-# cglib-demo
-sample code shows how to use cglib
+# cglib-samples
+cglib 3.1 sample code and jdk proxy demo
