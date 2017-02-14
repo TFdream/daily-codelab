@@ -9,10 +9,10 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>cglib-samples</artifactId>
+	<artifactId>cglib-sample</artifactId>
 	<packaging>jar</packaging>
 
-	<name>cglib-samples</name>
+	<name>cglib-sample</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

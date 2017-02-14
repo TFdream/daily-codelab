@@ -11,8 +11,9 @@
     <url>http://maven.apache.org</url>
 
     <modules>
-        <module>cglib-samples</module>
-        <module>guava-samples</module>
+        <module>cglib-sample</module>
+        <module>guava-sample</module>
+        <module>yaml-sample</module>
     </modules>
 
     <properties>
