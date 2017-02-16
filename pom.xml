@@ -21,6 +21,7 @@
         <module>api-doc-template</module>
         <module>job-interview</module>
         <module>code-generator</module>
+        <module>javassist-sample</module>
     </modules>
 
     <properties>
