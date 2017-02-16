@@ -1,2 +1,2 @@
-# daily-code
-my daily samples code.
+# daily-codelab
+personal codelab.
