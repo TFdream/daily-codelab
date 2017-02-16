@@ -19,6 +19,7 @@
         <module>maven-env-package</module>
         <module>serialization-sample</module>
         <module>api-doc-template</module>
+        <module>job-interview</module>
     </modules>
 
     <properties>
