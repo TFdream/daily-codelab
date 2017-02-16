@@ -11,7 +11,7 @@
     <url>http://maven.apache.org</url>
 
     <modules>
-        <module>annotation-in-action</module>
+        <module>annotation-sample</module>
         <module>algorithm-sample</module>
         <module>cglib-sample</module>
         <module>guava-sample</module>
