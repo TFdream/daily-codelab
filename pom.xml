@@ -11,10 +11,11 @@
     <url>http://maven.apache.org</url>
 
     <modules>
+        <module>annotation-in-action</module>
+        <module>algorithm-sample</module>
         <module>cglib-sample</module>
         <module>guava-sample</module>
         <module>yaml-sample</module>
-        <module>algorithm-sample</module>
     </modules>
 
     <properties>
