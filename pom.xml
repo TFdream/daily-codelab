@@ -18,6 +18,7 @@
         <module>yaml-sample</module>
         <module>maven-env-package</module>
         <module>serialization-sample</module>
+        <module>api-doc-template</module>
     </modules>
 
     <properties>
