@@ -17,6 +17,7 @@
         <module>guava-sample</module>
         <module>yaml-sample</module>
         <module>maven-env-package</module>
+        <module>serialization-sample</module>
     </modules>
 
     <properties>
