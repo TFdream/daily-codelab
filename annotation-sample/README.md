@@ -1,4 +1,4 @@
-## Java Annotation In Action
+## Java Annotation
 ### 基本概念
 
 Java 注解（Annotation）分为两类：编译时（Compile time）处理的注解和在运行时（Runtime）通过反射机制运行处理的注解。本文将重点介绍在编译时（Compile time）处理的注解，关于在运行时（Runtime）通过反射机制运行处理的注解，比较简单这里不做介绍大家可以自行找资料学习。
