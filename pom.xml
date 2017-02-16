@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.bytebeats.code</groupId>
-    <artifactId>daily-code</artifactId>
+    <groupId>com.bytebeats</groupId>
+    <artifactId>daily-codelab</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>daily-code</name>
+    <name>daily-codelab</name>
     <url>http://maven.apache.org</url>
 
     <modules>
