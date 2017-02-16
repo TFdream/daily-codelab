@@ -16,6 +16,7 @@
         <module>cglib-sample</module>
         <module>guava-sample</module>
         <module>yaml-sample</module>
+        <module>maven-env-package</module>
     </modules>
 
     <properties>
