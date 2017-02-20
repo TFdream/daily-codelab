@@ -22,6 +22,7 @@
         <module>job-interview</module>
         <module>code-generator</module>
         <module>javassist-sample</module>
+        <module>collection-sample</module>
     </modules>
 
     <properties>
