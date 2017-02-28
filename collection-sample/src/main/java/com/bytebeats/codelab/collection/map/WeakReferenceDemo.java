@@ -20,9 +20,9 @@ public class WeakReferenceDemo {
 
     public void testWeakReference(){
 
-//        Car car = new Car("Honda-Accord", 198000f,"white");
+        Car car = new Car("Honda-Accord", 198000f,"white");
 
-        WeakReference<Car> weakCar = new WeakReference<>(new Car("Honda-Accord", 198000f,"white"));
+        WeakReference<Car> weakCar = new WeakReference<>(car);
 
         System.gc();
 
@@ -31,7 +31,7 @@ public class WeakReferenceDemo {
             if(weakCar.get()!=null){
                 i++;
                 System.out.println("Object is alive for "+i+" loops - "+weakCar);
-                sleep(100);
+                sleep(1000);
             }else{
                 System.out.println("Object has been collected.");
                 break;
