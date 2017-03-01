@@ -1,6 +1,6 @@
 package com.bytebeats.codelab.generator;
 
-import com.ricky.codelab.generator.bean.Attribute;
+import com.bytebeats.codelab.generator.bean.Attribute;
 import freemarker.template.TemplateException;
 import java.io.File;
 import java.io.IOException;

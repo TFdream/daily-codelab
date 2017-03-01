@@ -24,6 +24,7 @@
         <module>javassist-sample</module>
         <module>collection-sample</module>
         <module>json-sample</module>
+		<module>event-bus</module>
     </modules>
 
     <properties>
