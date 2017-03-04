@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="okHttpClient" class="com.bytebeats.codelab.http.okhttp.OkHttpClientFactoryBean">
+        <property name="connectTimeout" value="2000" />
+        <property name="readTimeout" value="2000" />
+        <property name="writeTimeout" value="2000" />
+        <property name="host" value="" />
+        <property name="port" value="0" />
+        <property name="username" value="" />
+        <property name="password" value="" />
+    </bean>
+
+</beans>

@@ -25,6 +25,7 @@
         <module>collection-sample</module>
         <module>json-sample</module>
 		<module>event-bus</module>
+        <module>http-sample</module>
     </modules>
 
     <properties>
