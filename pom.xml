@@ -26,6 +26,7 @@
         <module>json-sample</module>
 		<module>event-bus</module>
         <module>http-sample</module>
+        <module>hsqldb-sample</module>
     </modules>
 
     <properties>
