@@ -27,6 +27,7 @@
 		<module>event-bus</module>
         <module>http-sample</module>
         <module>hsqldb-sample</module>
+        <module>h2-sample</module>
     </modules>
 
     <properties>
