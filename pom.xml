@@ -29,6 +29,7 @@
         <module>hsqldb-sample</module>
         <module>h2-sample</module>
         <module>bean-validation-sample</module>
+        <module>classloader-sample</module>
     </modules>
 
     <properties>
