@@ -26,7 +26,7 @@ Java高级开发工程师
 * 熟练使用分布式服务框架（Dubbo/Dubbox），并研究过其部分源码，对SOA、微服务架构有一定的认知和理解
 * 熟练掌握常用设计模式，对Java 多线程、并发编程有深刻理解
 * 熟练使用Mysql,Redis，有SQL查询调优，索引优化经验
-* 熟练使用Zookeeper，对MQ(Kafka/RockitMQ)，HBase有一定了解
+* 熟悉Zookeeper的原理和应用，对MQ(例如:Kafka/RockitMQ)，HBase有一定了解
 * 熟练掌握Linux 常用基本命令，编写简单shell脚本
 * 熟练掌握Git、Maven、IntelliJ IDEA开发工具使用
 * 具备良好的逻辑思维能力、学习能力和英文文档阅读能力
