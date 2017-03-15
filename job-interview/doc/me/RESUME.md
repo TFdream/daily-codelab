@@ -21,13 +21,13 @@ Java高级开发工程师
 2016.05 ~ 至今，供职于宜人贷借款技术部，任Java开发工程师职位，目前主要负责借款产品App后端系统分析、设计、技术方案优化、通用模块开发工作。
 
 ## 专业技能
-* 熟练掌握Java及Web开发技术，对OOP、AOP有深刻理解
+* 熟练掌握Java基础及Java Web开发技术，对OOP、AOP有深刻理解
 * 熟练运用Spring、SpringMVC、MyBatis框架，熟悉其内部原理并研究过部分源码
 * 熟悉JVM 垃圾收集、内存分配管理、类加载机制，对JVM性能调优有一定了解
-* 熟练使用分布式服务框架（Dubbo/Dubbox），并研究过其部分源码，对SOA、微服务架构有一定的认知和理解
+* 熟练使用分布式服务框架（Dubbo/Dubbox），研究过dubbo部分源码，对SOA、微服务架构有一定的认知和理解
 * 熟练掌握常用设计模式，对Java 多线程、并发编程有深刻理解
 * 熟练使用Mysql,Redis，有SQL查询调优，索引优化经验
-* 熟悉Zookeeper的原理和应用，对MQ(例如:Kafka/RockitMQ)，HBase有一定了解
+* 熟悉Zookeeper的应用场景，对MQ(例如:Kafka/RockitMQ)，HBase有一定了解
 * 熟练掌握Linux 常用基本命令，编写简单shell脚本
 * 熟练掌握Git、Maven等开发工具使用
 * 具备良好的逻辑思维能力、学习能力和英文文档阅读能力
