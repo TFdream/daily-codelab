@@ -1,5 +1,9 @@
 package com.bytebeats.codelab.javassist.service;
 
+import com.bytebeats.codelab.javassist.model.User;
+
+import java.util.List;
+
 /**
  * ${DESCRIPTION}
  *
@@ -11,4 +15,12 @@ public interface HelloService {
     void say(String msg);
 
     String echo(String msg);
+
+    String[] getHobbies();
+
+    int insert(User user);
+
+    User getUser();
+
+    List<User> getUser(String group, int age);
 }

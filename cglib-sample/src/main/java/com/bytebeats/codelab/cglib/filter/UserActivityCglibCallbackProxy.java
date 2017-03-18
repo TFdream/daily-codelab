@@ -1,6 +1,6 @@
 package com.bytebeats.codelab.cglib.filter;
 
-import com.bytebeats.codelab.cglib.log.UserActivityLogginImpl;
+import com.bytebeats.codelab.cglib.service.HelloServiceImpl;
 
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
@@ -14,14 +14,14 @@ public class UserActivityCglibCallbackProxy {
 		this.methodInterceptor = methodInterceptor;
 	}
 	
-	public UserActivityLogginImpl getProxyInstance(){
+	public HelloServiceImpl getProxyInstance(){
 	    Enhancer en = new Enhancer();
 	    //进行代理 
-	    en.setSuperclass(UserActivityLogginImpl.class);  
+	    en.setSuperclass(HelloServiceImpl.class);
 	    en.setCallbacks(new Callback[]{methodInterceptor, NoOp.INSTANCE});  
 	    en.setCallbackFilter(new MyCallbackFilter());  
 	    //生成代理实例  
-	    return (UserActivityLogginImpl)en.create();  
+	    return (HelloServiceImpl)en.create();
 	}  
 
 }

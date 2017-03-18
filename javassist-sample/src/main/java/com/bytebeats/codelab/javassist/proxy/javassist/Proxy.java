@@ -3,7 +3,12 @@ package com.bytebeats.codelab.javassist.proxy.javassist;
 import javassist.*;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -22,6 +27,7 @@ public class Proxy {
             throws Exception {
 
         ClassPool pool = ClassPool.getDefault();
+
         //生成代理类的全限定名
         String qualifiedName = targetClass.getName()+PROXY_PREFIX;
         // 创建代理类
@@ -42,55 +48,87 @@ public class Proxy {
         proxy.addConstructor(CtNewConstructor.defaultConstructor(proxy));
 
         // 获取被代理类的所有接口
-        CtClass[] interfaces = pool.get(targetClass.getName()).getInterfaces();
+        Class[] interfaces = getInterfaces(targetClass);
 
-        int cnt = 0;
-        for (CtClass parent : interfaces) {
-            proxy.addInterface(parent);
-            CtMethod[] methods = parent.getDeclaredMethods();
-            for (int i= 0; i< methods.length; i++) {
-                CtMethod method = methods[i];
+        List<Method> methods = new ArrayList<>();
+        for (Class cls : interfaces) {
+            CtClass ctClass = pool.get(cls.getName());
+            proxy.addInterface(ctClass);
 
-                CtClass returnType = method.getReturnType();
-                CtMethod ctMethod = new CtMethod(returnType, method.getName(), method.getParameterTypes(), proxy);
+            Method[] arr = cls.getDeclaredMethods();
+            for (Method method : arr) {
+                int ix = methods.size();
+                Class<?> rt = method.getReturnType();
+                Class<?>[] pts = method.getParameterTypes();
 
-                if(returnType==CtClass.voidType){
-                    ctMethod.setBody(String.format(" handler.invoke(this, methods[%d], %s);", cnt, "$args"));
-                } else {
-                    ctMethod.setBody(String.format(" return (%s) handler.invoke(this, methods[%d], %s);", asArgument(returnType, ""), cnt, "$args"));
+                StringBuilder code = new StringBuilder("Object[] args = new Object[").append(pts.length).append("];");
+                for(int j=0;j<pts.length;j++) {
+                    code.append(" args[").append(j).append("] = ($w)$").append(j + 1).append(";");
                 }
+                code.append(" Object ret = handler.invoke(this, methods[" + ix + "], args);");
+                if(!Void.TYPE.equals(rt) )
+                    code.append(" return ").append(asArgument(rt, "ret")).append(";");
 
+                StringBuilder sb = new StringBuilder(1024);
+                sb.append(modifier(method.getModifiers())).append(' ').append(getName(rt)).append(' ').append(method.getName());
+                sb.append('(');
+                for(int i=0;i<pts.length;i++)
+                {
+                    if( i > 0 )
+                        sb.append(',');
+                    sb.append(getName(pts[i]));
+                    sb.append(" arg").append(i);
+                }
+                sb.append(')');
+
+                Class<?>[] ets = method.getExceptionTypes();    //方法抛出异常
+                if( ets != null && ets.length > 0 )
+                {
+                    sb.append(" throws ");
+                    for(int i=0;i<ets.length;i++)
+                    {
+                        if( i > 0 )
+                            sb.append(',');
+                        sb.append(getName(ets[i]));
+                    }
+                }
+                sb.append('{').append(code.toString()).append('}');
+
+                CtMethod ctMethod = CtMethod.make(sb.toString(), proxy);
                 proxy.addMethod(ctMethod);
-                cnt++;
+
+                methods.add(method);
             }
         }
 
         proxy.setModifiers(Modifier.PUBLIC);
 
         Class<?> proxyClass = proxy.toClass(classLoader, null);
+        proxyClass.getField("methods").set(null, methods.toArray(new Method[0]));
+
         return proxyClass.getConstructor(InvocationHandler.class).newInstance(invocationHandler);
     }
 
-    private static String asArgument(CtClass cl, String name) {
+    protected static Class<?>[] getInterfaces(Class<?> type){
+        Set<Class<?>> interfaces = new HashSet<>();
+        while(type!=null){
+            Class<?>[] arr = type.getInterfaces();
+            if(arr!=null){
+                for(Class<?> cls : arr){
+                    interfaces.add(cls);
+                }
+            }
+            type = type.getSuperclass();
+        }
+        return interfaces.size()>0 ? interfaces.toArray(new Class<?>[interfaces.size()]): null;
+    }
 
-        if( cl.booleanType == cl )
-            return name + "==null?false:((Boolean)" + name + ").booleanValue()";
-        if( cl.byteType == cl )
-            return name + "==null?(byte)0:((Byte)" + name + ").byteValue()";
-        if( cl.charType == cl )
-            return name + "==null?(char)0:((Character)" + name + ").charValue()";
-        if( cl.doubleType == cl )
-            return name + "==null?(double)0:((Double)" + name + ").doubleValue()";
-        if( cl.floatType == cl )
-            return name + "==null?(float)0:((Float)" + name + ").floatValue()";
-        if( cl.intType == cl )
-            return name + "==null?(int)0:((Integer)" + name + ").intValue()";
-        if( cl.longType == cl )
-            return name + "==null?(long)0:((Long)" + name + ").longValue()";
-        if( cl.shortType == cl )
-            return name + "==null?(short)0:((Short)" + name + ").shortValue()";
-
-        return cl.getName();
+    private static String modifier(int mod)
+    {
+        if( Modifier.isPublic(mod) ) return "public";
+        if( Modifier.isProtected(mod) ) return "protected";
+        if( Modifier.isPrivate(mod) ) return "private";
+        return "";
     }
 
     public static String getName(Class<?> c)
@@ -108,5 +146,30 @@ public class Proxy {
             return c.getName() + sb.toString();
         }
         return c.getName();
+    }
+
+    private static String asArgument(Class<?> cl, String name)
+    {
+        if( cl.isPrimitive() )
+        {
+            if( Boolean.TYPE == cl )
+                return name + "==null?false:((Boolean)" + name + ").booleanValue()";
+            if( Byte.TYPE == cl )
+                return name + "==null?(byte)0:((Byte)" + name + ").byteValue()";
+            if( Character.TYPE == cl )
+                return name + "==null?(char)0:((Character)" + name + ").charValue()";
+            if( Double.TYPE == cl )
+                return name + "==null?(double)0:((Double)" + name + ").doubleValue()";
+            if( Float.TYPE == cl )
+                return name + "==null?(float)0:((Float)" + name + ").floatValue()";
+            if( Integer.TYPE == cl )
+                return name + "==null?(int)0:((Integer)" + name + ").intValue()";
+            if( Long.TYPE == cl )
+                return name + "==null?(long)0:((Long)" + name + ").longValue()";
+            if( Short.TYPE == cl )
+                return name + "==null?(short)0:((Short)" + name + ").shortValue()";
+            throw new RuntimeException(name+" is unknown primitive type.");
+        }
+        return "(" + getName(cl) + ")"+name;
     }
 }

@@ -1,5 +1,6 @@
 package com.bytebeats.codelab.javassist.proxy;
 
+import com.bytebeats.codelab.javassist.model.User;
 import com.bytebeats.codelab.javassist.proxy.javassist.JavassistProxyFactory;
 import com.bytebeats.codelab.javassist.proxy.jdk.JdkProxyFactory;
 import com.bytebeats.codelab.javassist.service.HelloService;
@@ -37,7 +38,11 @@ public class JavassistProxyDemo {
         HelloService proxy = (HelloService) factory.getProxy();
 
         proxy.say("ricky");
-
         proxy.echo("world");
+        proxy.getHobbies();
+        proxy.insert(new User());
+        proxy.getUser();
+        proxy.getUser("A", 23);
+
     }
 }
