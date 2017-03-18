@@ -70,13 +70,13 @@ public class ProxyGenerator {
                     code.append(" return ").append(asArgument(rt, "ret")).append(";");
 
                 StringBuilder sb = new StringBuilder(1024);
-                sb.append(modifier(method.getModifiers())).append(' ').append(getName(rt)).append(' ').append(method.getName());
+                sb.append(modifier(method.getModifiers())).append(' ').append(getParameterType(rt)).append(' ').append(method.getName());
                 sb.append('(');
                 for(int i=0;i<pts.length;i++)
                 {
                     if( i > 0 )
                         sb.append(',');
-                    sb.append(getName(pts[i]));
+                    sb.append(getParameterType(pts[i]));
                     sb.append(" arg").append(i);
                 }
                 sb.append(')');
@@ -89,7 +89,7 @@ public class ProxyGenerator {
                     {
                         if( i > 0 )
                             sb.append(',');
-                        sb.append(getName(ets[i]));
+                        sb.append(getParameterType(ets[i]));
                     }
                 }
                 sb.append('{').append(code.toString()).append('}');
@@ -109,7 +109,15 @@ public class ProxyGenerator {
         return proxyClass.getConstructor(InvocationHandler.class).newInstance(invocationHandler);
     }
 
-    protected static Class<?>[] getInterfaces(Class<?> type){
+    private static String modifier(int mod) {
+        if( Modifier.isPublic(mod) ) return "public";
+        if( Modifier.isProtected(mod) ) return "protected";
+        if( Modifier.isPrivate(mod) ) return "private";
+        return "";
+    }
+
+
+    public static Class<?>[] getInterfaces(Class<?> type){
         Set<Class<?>> interfaces = new HashSet<>();
         while(type!=null){
             Class<?>[] arr = type.getInterfaces();
@@ -123,35 +131,26 @@ public class ProxyGenerator {
         return interfaces.size()>0 ? interfaces.toArray(new Class<?>[interfaces.size()]): null;
     }
 
-    private static String modifier(int mod)
-    {
-        if( Modifier.isPublic(mod) ) return "public";
-        if( Modifier.isProtected(mod) ) return "protected";
-        if( Modifier.isPrivate(mod) ) return "private";
-        return "";
-    }
-
-    public static String getName(Class<?> c)
-    {
-        if( c.isArray() )
-        {
+    /**
+     * 数组类型返回 String[]
+     * @param c
+     * @return
+     */
+    public static String getParameterType(Class<?> c) {
+        if(c.isArray()) {   //数组类型
             StringBuilder sb = new StringBuilder();
-            do
-            {
+            do {
                 sb.append("[]");
                 c = c.getComponentType();
-            }
-            while( c.isArray() );
+            } while( c.isArray() );
 
             return c.getName() + sb.toString();
         }
         return c.getName();
     }
 
-    private static String asArgument(Class<?> cl, String name)
-    {
-        if( cl.isPrimitive() )
-        {
+    private static String asArgument(Class<?> cl, String name) {
+        if( cl.isPrimitive() ) {
             if( Boolean.TYPE == cl )
                 return name + "==null?false:((Boolean)" + name + ").booleanValue()";
             if( Byte.TYPE == cl )
@@ -170,6 +169,6 @@ public class ProxyGenerator {
                 return name + "==null?(short)0:((Short)" + name + ").shortValue()";
             throw new RuntimeException(name+" is unknown primitive type.");
         }
-        return "(" + getName(cl) + ")"+name;
+        return "(" + getParameterType(cl) + ")"+name;
     }
 }
