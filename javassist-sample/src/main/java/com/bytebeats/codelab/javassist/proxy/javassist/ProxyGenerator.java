@@ -1,15 +1,15 @@
 package com.bytebeats.codelab.javassist.proxy.javassist;
 
+import com.bytebeats.codelab.javassist.util.ClassUtils;
 import javassist.*;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * ${DESCRIPTION}
@@ -19,17 +19,21 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class ProxyGenerator {
 
-    private static final String PROXY_PREFIX = "$Proxy";
+    private static final AtomicInteger counter = new AtomicInteger(1);
 
-    private static final AtomicLong SUFFIX_GENERATOR = new AtomicLong(1);
+    private static ConcurrentHashMap<Class<?>, Object> proxyInstanceCache = new ConcurrentHashMap<>();
 
     public static Object newProxyInstance(ClassLoader classLoader, Class<?> targetClass, InvocationHandler invocationHandler)
             throws Exception {
 
+        if(proxyInstanceCache.containsKey(targetClass)){
+            return proxyInstanceCache.get(targetClass);
+        }
+
         ClassPool pool = ClassPool.getDefault();
 
         //生成代理类的全限定名
-        String qualifiedName = targetClass.getName()+PROXY_PREFIX;
+        String qualifiedName = generateClassName(targetClass);
         // 创建代理类
         CtClass proxy = pool.makeClass(qualifiedName);
 
@@ -48,7 +52,7 @@ public class ProxyGenerator {
         proxy.addConstructor(CtNewConstructor.defaultConstructor(proxy));
 
         // 获取被代理类的所有接口
-        Class[] interfaces = getInterfaces(targetClass);
+        List<Class<?>> interfaces = ClassUtils.getAllInterfaces(targetClass);
 
         List<Method> methods = new ArrayList<>();
         for (Class cls : interfaces) {
@@ -106,7 +110,12 @@ public class ProxyGenerator {
         Class<?> proxyClass = proxy.toClass(classLoader, null);
         proxyClass.getField("methods").set(null, methods.toArray(new Method[0]));
 
-        return proxyClass.getConstructor(InvocationHandler.class).newInstance(invocationHandler);
+        Object instance = proxyClass.getConstructor(InvocationHandler.class).newInstance(invocationHandler);
+        Object old = proxyInstanceCache.putIfAbsent(targetClass, instance);
+        if(old!=null){
+            instance = old;
+        }
+        return instance;
     }
 
     private static String modifier(int mod) {
@@ -114,21 +123,6 @@ public class ProxyGenerator {
         if( Modifier.isProtected(mod) ) return "protected";
         if( Modifier.isPrivate(mod) ) return "private";
         return "";
-    }
-
-
-    public static Class<?>[] getInterfaces(Class<?> type){
-        Set<Class<?>> interfaces = new HashSet<>();
-        while(type!=null){
-            Class<?>[] arr = type.getInterfaces();
-            if(arr!=null){
-                for(Class<?> cls : arr){
-                    interfaces.add(cls);
-                }
-            }
-            type = type.getSuperclass();
-        }
-        return interfaces.size()>0 ? interfaces.toArray(new Class<?>[interfaces.size()]): null;
     }
 
     /**
@@ -171,4 +165,10 @@ public class ProxyGenerator {
         }
         return "(" + getParameterType(cl) + ")"+name;
     }
+
+    private static String generateClassName(Class<?> type){
+
+        return String.format("%s$Proxy%d", type.getName(), counter.getAndIncrement());
+    }
 }
+
