@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author Ricky Fung
  * @date 2017-02-20 14:55
  */
-public class Proxy {
+public class ProxyGenerator {
 
     private static final String PROXY_PREFIX = "$Proxy";
 
