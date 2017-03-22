@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * ${DESCRIPTION}
  *
  * @author Ricky Fung
- * @date 2017-02-20 14:55
+ * @date 2017-03-18 14:55
  */
 public class ProxyGenerator {
 

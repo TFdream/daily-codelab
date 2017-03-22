@@ -15,13 +15,13 @@ import java.lang.reflect.Method;
  * @author Ricky Fung
  * @date 2017-02-16 17:23
  */
-public class JavassistProxyDemo {
+public class ProxyDemo {
 
     public static void main(String[] args) {
 
         try {
 //            new JavassistProxyDemo().testProxy("Jdk");
-            new JavassistProxyDemo().testProxy("javassist");
+            new ProxyDemo().testProxy("javassist");
         } catch (Throwable e) {
             e.printStackTrace();
         }
