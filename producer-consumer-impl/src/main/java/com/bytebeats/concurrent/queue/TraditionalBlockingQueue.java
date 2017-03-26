@@ -1,6 +1,5 @@
 package com.bytebeats.concurrent.queue;
 
-import com.bytebeats.concurrent.IBlockingQueue;
 import java.util.LinkedList;
 
 /**

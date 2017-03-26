@@ -1,4 +1,4 @@
-package com.bytebeats.concurrent;
+package com.bytebeats.concurrent.queue;
 
 /**
  * ${DESCRIPTION}

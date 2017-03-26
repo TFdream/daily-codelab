@@ -1,5 +1,6 @@
 package com.bytebeats.concurrent;
 
+import com.bytebeats.concurrent.queue.IBlockingQueue;
 import com.bytebeats.concurrent.util.Constant;
 
 import java.util.concurrent.TimeUnit;
@@ -30,7 +31,7 @@ public class Consumer implements Runnable {
                 }
                 TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println("Consumer over");

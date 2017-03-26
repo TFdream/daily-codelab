@@ -1,5 +1,6 @@
 package com.bytebeats.concurrent;
 
+import com.bytebeats.concurrent.queue.IBlockingQueue;
 import com.bytebeats.concurrent.util.Constant;
 
 /**
@@ -24,7 +25,7 @@ public class Producer implements Runnable {
             try {
                 queue.put("data_"+i);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
 
@@ -32,7 +33,7 @@ public class Producer implements Runnable {
             try {
                 queue.put(Constant.ENDING_SYMBOL);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
 

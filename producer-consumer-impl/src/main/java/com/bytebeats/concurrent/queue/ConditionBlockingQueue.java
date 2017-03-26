@@ -1,13 +1,11 @@
 package com.bytebeats.concurrent.queue;
 
-import com.bytebeats.concurrent.IBlockingQueue;
-
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * ${DESCRIPTION}
+ * 通过Lock和Condition实现阻塞队列
  *
  * @author Ricky Fung
  * @create 2017-03-26 17:08

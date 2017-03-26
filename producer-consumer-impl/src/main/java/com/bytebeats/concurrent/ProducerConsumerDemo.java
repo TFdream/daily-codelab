@@ -1,7 +1,7 @@
 package com.bytebeats.concurrent;
 
 import com.bytebeats.concurrent.queue.ConditionBlockingQueue;
-import com.bytebeats.concurrent.queue.TraditionalBlockingQueue;
+import com.bytebeats.concurrent.queue.IBlockingQueue;
 
 /**
  * ${DESCRIPTION}
