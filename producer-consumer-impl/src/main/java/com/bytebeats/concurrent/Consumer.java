@@ -6,7 +6,7 @@ import com.bytebeats.concurrent.util.Constant;
 import java.util.concurrent.TimeUnit;
 
 /**
- * ${DESCRIPTION}
+ * 消费者
  *
  * @author Ricky Fung
  * @create 2017-03-26 16:16

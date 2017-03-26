@@ -1,7 +1,7 @@
 package com.bytebeats.concurrent.queue;
 
 /**
- * ${DESCRIPTION}
+ * 阻塞队列接口
  *
  * @author Ricky Fung
  * @create 2017-03-26 17:28

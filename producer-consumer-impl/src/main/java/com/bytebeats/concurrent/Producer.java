@@ -4,7 +4,7 @@ import com.bytebeats.concurrent.queue.IBlockingQueue;
 import com.bytebeats.concurrent.util.Constant;
 
 /**
- * ${DESCRIPTION}
+ * 生产者
  *
  * @author Ricky Fung
  * @create 2017-03-26 16:16
