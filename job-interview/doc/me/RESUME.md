@@ -34,7 +34,8 @@ Java高级开发工程师
 
 ## 项目经验
 ### 宜小贷借款产品
-#### 开发周期: 2017.01 ~ 2017.04 
+公司2017年战略性产品
+#### 开发周期: 2017.01 ~ 至今 
 #### 工作职责：
 	1. 负责宜小贷借款产品APP后端研发工作，参与整个项目的需求评审、需求分析、技术方案设计和评审、代码设计开发，保证系统数据一致性和可用性
 	2. 解决项目中遇到疑难问题，定期组织Code Review
@@ -55,7 +56,7 @@ Java高级开发工程师
 
 
 ## 其他
-* 自我驱动型，平时喜欢看书、关注前沿技术、各类体育运动(篮球、羽毛球)，渴望不断超越自我
+* 自我驱动型，平时喜欢看书、关注前沿技术、各类体育运动(篮球、羽毛球)，乐于接受新挑战
 * [简书博客](http://www.jianshu.com/u/215e5a237558): http://www.jianshu.com/u/215e5a237558<br>
 * [CSDN博客](http://blog.csdn.net/top_code?viewmode=contents): http://blog.csdn.net/top_code?viewmode=contents<br>
 * [Github](https://github.com/TiFG/): https://github.com/TiFG/
