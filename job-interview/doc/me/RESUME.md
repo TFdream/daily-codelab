@@ -24,7 +24,8 @@ Java高级开发工程师
 * 熟练掌握Java基础及Java Web开发技术，对OOP、AOP有深刻理解
 * 熟练运用Spring、SpringMVC、MyBatis框架，熟悉其内部原理并研究过部分源码
 * 熟悉JVM 垃圾收集、内存分配管理、类加载机制，对JVM性能调优有一定了解
-* 熟练使用分布式服务框架（Dubbo/Dubbox），研究过dubbo部分源码，对SOA、微服务架构有一定的认知和理解
+* 熟练使用分布式服务框架（Dubbo/Dubbox），研究过dubbo部分源码，熟悉RPC原理、NIO及Netty使用
+* 对SOA、微服务架构有一定的认知和理解
 * 熟练掌握常用设计模式，对Java 多线程、并发编程有深刻理解
 * 熟练使用Mysql,Redis，有SQL查询调优，索引优化经验
 * 熟悉Zookeeper的应用场景，对MQ(例如:Kafka/RockitMQ)，HBase有一定了解
