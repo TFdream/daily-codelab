@@ -28,6 +28,7 @@
         <module>http-sample</module>
         <module>hsqldb-sample</module>
         <module>h2-sample</module>
+        <module>velocity-sample</module>
         <module>bean-validation-sample</module>
         <module>classloader-sample</module>
         <module>bean-properties-copy</module>
