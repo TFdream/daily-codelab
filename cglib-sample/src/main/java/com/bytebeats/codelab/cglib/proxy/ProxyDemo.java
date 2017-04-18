@@ -1,6 +1,6 @@
 package com.bytebeats.codelab.cglib.proxy;
 
-import com.bytebeats.codelab.cglib.proxy.impl.CgLibProxyFactory;
+import com.bytebeats.codelab.cglib.proxy.impl.CglibProxyFactory;
 import com.bytebeats.codelab.cglib.proxy.impl.JdkProxyFactory;
 import com.bytebeats.codelab.cglib.service.HelloService;
 import com.bytebeats.codelab.cglib.service.HelloServiceImpl;
@@ -19,7 +19,7 @@ public class ProxyDemo {
 		jdkProxy.hashCode();
 
 		//CgLib代理
-		ProxyFactory cgLibProxyFactory = new CgLibProxyFactory();
+		ProxyFactory cgLibProxyFactory = new CglibProxyFactory();
 		HelloService cgLibProxy = cgLibProxyFactory.getProxy(helloService);
 		cgLibProxy.echo("ricky");
 		jdkProxy.hashCode();

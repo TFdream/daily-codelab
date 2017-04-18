@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @author Ricky
  *
  */
-public class CgLibProxyFactory implements ProxyFactory {
+public class CglibProxyFactory implements ProxyFactory {
     private final Enhancer en = new Enhancer();
 
     @Override
