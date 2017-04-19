@@ -9,9 +9,8 @@ package com.bytebeats.codelab.interview.sort;
 public class SelectSort extends Sort {
 
 	@Override
-	public void sort(int[] arr) {
-
-		int len = arr.length;
+	public void sort(int[] arr, int start, int end) {
+		int len = end - start + 1;
 		for (int i = 0; i < len; i++) {
 			int index = i;
 			for (int j = i + 1; j < len; j++) {

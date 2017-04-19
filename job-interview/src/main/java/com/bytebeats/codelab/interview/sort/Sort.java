@@ -2,8 +2,12 @@ package com.bytebeats.codelab.interview.sort;
 
 public abstract class Sort {
 
-	public abstract void sort(int[] arr);
-	
+	public void sort(int[] arr){
+		sort(arr, 0, arr.length);
+	}
+
+	public abstract void sort(int[] arr, int start, int end);
+
 	protected void printArray(int[] arr){
 		for (int i = 0; i < arr.length; i++) {
             if(i!=arr.length-1){

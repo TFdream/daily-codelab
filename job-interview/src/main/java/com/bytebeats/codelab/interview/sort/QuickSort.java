@@ -48,19 +48,8 @@ public class QuickSort extends Sort {
 	}
 
 	@Override
-	public void sort(int[] arr) {
-		quickSort(arr, 0, arr.length-1);
-	}
-
-	public static void main(String[] args) {
-		
-		int[] arr ={10,8,12,5,9,16,11};
-		
-		QuickSort sort = new QuickSort();
-		sort.printArray(arr);
-		sort.sort(arr);
-		sort.printArray(arr);
-		
+	public void sort(int[] arr, int start, int end) {
+		quickSort(arr, start, end-1);
 	}
 
 	public void quick_sort(int arr[], int left, int right) {

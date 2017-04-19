@@ -9,19 +9,18 @@ package com.bytebeats.codelab.interview.sort;
 public class BubbleSort extends Sort {
 
 	@Override
-	public void sort(int[] arr){
-		
-		for(int i=0;i<arr.length;i++){
-			
-			for(int j=i+1;j<arr.length;j++){
-				
+	public void sort(int[] arr, int start, int end) {
+		for(int i=start;i<end;i++){
+
+			for(int j=i+1;j<end;j++){
+
 				if(arr[i]>arr[j]){
 					swap(arr, i, j);
 				}
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		
 		int[] arr = {13,27,49,78,34,12,64,1,8};
