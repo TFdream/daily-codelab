@@ -5,51 +5,64 @@ import java.util.List;
 
 public class User implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private long id;
+
+	private Long id;
 	private String name;
-	private String gender;
+	private String password;
 	private int age;
-	private List<String> hobby;
-	
-	public long getId() {
+	private List<String> hobbies;
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getGender() {
-		return gender;
+
+	public String getPassword() {
+		return password;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public List<String> getHobby() {
-		return hobby;
+
+	public List<String> getHobbies() {
+		return hobbies;
 	}
-	public void setHobby(List<String> hobby) {
-		this.hobby = hobby;
+
+	public void setHobbies(List<String> hobbies) {
+		this.hobbies = hobbies;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", gender=" + gender
-				+ ", age=" + age + ", hobby=" + hobby + "]";
+		return "User{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", password='" + password + '\'' +
+				", age=" + age +
+				", hobbies=" + hobbies +
+				'}';
 	}
-	
 }

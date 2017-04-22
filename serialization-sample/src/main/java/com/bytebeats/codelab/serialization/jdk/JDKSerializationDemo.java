@@ -11,11 +11,11 @@ public class JDKSerializationDemo {
 	public static void main(String[] args) {
 		
 		User user = new User();
-		user.setId(1);
-        user.setName("hollis");
-        user.setGender("male");
-        user.setAge(23);
-        user.setHobby(Arrays.asList("Music", "Basketball"));
+		user.setId(1L);
+        user.setName("Ricky");
+        user.setPassword("root");
+        user.setAge(28);
+        user.setHobbies(Arrays.asList("Music", "Basketball"));
         System.out.println(user);
         
         File objectFile = new File("user.bin");
@@ -37,9 +37,7 @@ public class JDKSerializationDemo {
             ois = new ObjectInputStream(new FileInputStream(objectFile));
             User newUser = (User) ois.readObject();
             System.out.println(newUser);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             IoUtils.closeQuietly(ois);

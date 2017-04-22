@@ -1,15 +1,15 @@
 package com.bytebeats.codelab.serialization.hessian;
 
+import com.bytebeats.codelab.serialization.model.Car;
+import com.bytebeats.codelab.serialization.util.IoUtils;
+import com.caucho.hessian.io.Hessian2Input;
+import com.caucho.hessian.io.Hessian2Output;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.bytebeats.codelab.serialization.model.Car;
-import com.caucho.hessian.io.Hessian2Input;
-import com.caucho.hessian.io.Hessian2Output;
 
 /**
  * http://www.caucho.com/resin-3.1/examples/hessian-serialize/index.xtp
@@ -63,9 +63,7 @@ public class HessianByteSerializationDemo {
 			
 			return bos.toByteArray();
 			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			try {
@@ -98,9 +96,7 @@ public class HessianByteSerializationDemo {
 			
 			System.out.println(list);
 			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			try {
@@ -108,11 +104,7 @@ public class HessianByteSerializationDemo {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			try {
-				bin.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			IoUtils.closeQuietly(bin);
 		}
 	}
 }

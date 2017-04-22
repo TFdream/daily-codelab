@@ -1,17 +1,10 @@
 package com.bytebeats.codelab.serialization.hessian;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bytebeats.codelab.serialization.model.Car;
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
+
+import java.io.*;
 
 /**
  * http://www.caucho.com/resin-3.1/examples/hessian-serialize/index.xtp
@@ -30,42 +23,24 @@ public class HessianSerializationDemo {
 	}
 	
 	public void serialize(){
-		
-		List<Car> list = new ArrayList<>();
-		Car car1 = new Car();
-		car1.setName("X5");
-		car1.setBrand("BMW");
-		car1.setPrice(64.5);
-		car1.setSpeed(200);
-		list.add(car1);
-		
-		Car car2 = new Car();
-		car2.setName("K5");
-		car2.setBrand("KIA");
-		car2.setPrice(24.5);
-		car2.setSpeed(180);
-		list.add(car2);
-		
-		System.out.println(list);
-		
+
+		Car car = new Car();
+		car.setName("X5");
+		car.setBrand("BMW");
+		car.setPrice(64.5);
+		car.setSpeed(200);
+
+		System.out.println("序列化:"+car);
+
 		//Serialization
 		Hessian2Output out = null;
 		try {
 			
 			out = new Hessian2Output(new FileOutputStream(objectFile));
 			out.startMessage();
-			//长度
-			out.writeInt(list.size());
-
-			for (Car car : list) {
-				out.writeObject(car);
-			}
-			
+			out.writeObject(car);
 			out.completeMessage();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			try {
@@ -85,21 +60,12 @@ public class HessianSerializationDemo {
 			in = new Hessian2Input(bin);
 
 			in.startMessage();
-
-			int length = in.readInt();
-			ArrayList<Car> list = new ArrayList<>(length);
-			
-			for (int i = 0; i < length; i++) {
-			  list.add((Car) in.readObject());
-			}
-
+			Car car = (Car) in.readObject();
 			in.completeMessage();
 			
-			System.out.println(list);
+			System.out.println("反序列化:"+car);
 			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			try {

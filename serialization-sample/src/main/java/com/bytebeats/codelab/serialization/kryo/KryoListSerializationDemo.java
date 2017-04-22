@@ -66,7 +66,6 @@ public class KryoListSerializationDemo {
 			e.printStackTrace();
 		}finally{
 			IoUtils.closeQuietly(input);
-
 		}
 	}
 
