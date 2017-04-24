@@ -34,6 +34,7 @@
         <module>producer-consumer-impl</module>
         <module>mock-framework-sample</module>
         <module>velocity-sample</module>
+        <module>concurrent-api-sample</module>
     </modules>
 
     <properties>
