@@ -94,7 +94,7 @@ Java高级开发工程师
 
 
 ## 其他
-* 自我驱动型，平时喜欢看书、关注前沿技术、各类体育运动(篮球、羽毛球)，乐于接受新挑战
+* 自我驱动型，平时喜欢看书、研究开源代码、关注前沿技术、各类体育运动(篮球、羽毛球)，乐于接受新挑战
 * [简书博客](http://www.jianshu.com/u/215e5a237558): http://www.jianshu.com/u/215e5a237558<br>
 * [CSDN博客](http://blog.csdn.net/top_code?viewmode=contents): http://blog.csdn.net/top_code?viewmode=contents<br>
 * [Github](https://github.com/TiFG/): https://github.com/TiFG/
